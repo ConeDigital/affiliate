@@ -6,7 +6,14 @@ FONTS
 
 ******************************************/
 
+@font-face {
+  font-family: pangram;
+  src: url('../fonts/Pangram-Medium.otf');
+  font-style: normal;
+}
+
+$pangram: pangram;
 
 
-
-
+$primary-color: #22314e;
+$secondary-color: #ffa200;
