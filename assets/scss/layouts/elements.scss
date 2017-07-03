@@ -2,8 +2,19 @@ body{
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: $pangram;
-  background: #f5f5f5;
+  font-family: $proxima;
+  background: #f7f7f7;
+}
+
+h1{
+  color: #000000;
+  font-size: 30px;
+  line-height: 45px;
+}
+
+p, h5{
+  line-height: 19px;
+  font-size: 16px;
 }
 
 .background-img{
@@ -13,14 +24,14 @@ body{
 }
 
 .max-width{
-  max-width: 1000px;
+  max-width: 1100px;
   width: calc(100% - 60px);
   margin: 0 auto;
   padding: 0 30px;
 
   @include breakpoint(tablet) {
-    padding: 0;
-    width: calc(100%);
+    padding: 0 15px;
+    width: calc(100% - 30px);
   }
 }
 
@@ -31,4 +42,50 @@ body{
   left: 0;
   position: absolute;
   z-index: 2;
+}
+
+.bonuses{
+  h5{
+    color: #4A4A4A;
+    margin: 0 0 20px 0;
+
+    @include breakpoint(desktop) {
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
+.bonus-grid{
+  padding: 10px 20px;
+  background: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  margin-bottom: 17px;
+  min-height: 25px;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover{
+    box-shadow: 0 3px 8px 3px rgba(0,0,0,.1);
+  }
+
+  img{
+    width: auto;
+    height: auto;
+    max-width: 110px;
+    max-height: 25px;
+  }
+
+  p{
+    margin: 0;
+    color: $blue;
+    font-weight: bold;
+  }
+}
+
+.bonus-logo{
+  display: flex;
+  align-items: center;
+  min-width: 150px;
 }
