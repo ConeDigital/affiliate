@@ -28,7 +28,7 @@
             <div class="header-right">
                 <div class="social-list">
                     <div class="social-icon">
-                        <a class="absolute-link" href="#" target="_blank"></a>
+                        <a class="absolute-link" href="https://www.facebook.com/Esport365/?fref=ts" target="_blank"></a>
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                     </div>
                     <div class="social-icon">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="social-icon">
                         <a class="absolute-link" href="#" target="_blank"></a>
-                        <i class="fa fa-github-alt" aria-hidden="true"></i>
+                        <i class="fa fa-youtube" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>

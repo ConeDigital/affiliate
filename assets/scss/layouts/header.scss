@@ -47,6 +47,11 @@ header{
     text-decoration: none;
     text-transform: uppercase;
   }
+  .current-menu-item{
+    a{
+      color: $blue;
+    }
+  }
 }
 
 .social-list{
@@ -67,5 +72,30 @@ header{
   i{
     font-size: 16px;
     color: #9B9B9B;
+  }
+}
+
+.second-header{
+  height: 46px;
+  background-color: #4A4A4A;
+  position: relative;
+
+  .max-width{
+    height: 100%;
+    display: flex;
+  }
+
+  a{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 50px;
+  }
+
+  .active-link{
+    font-weight: bold;
   }
 }

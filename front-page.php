@@ -1,303 +1,53 @@
 <?php get_header() ; ?>
 
-<section class="hero background-img" style="background-image: url('<?php  the_post_thumbnail_url(); ?>')">
-    <div class="max-width">
-        <div class="hero-content">
-           <?php the_content() ; ?>
-        </div>
-    </div>
-</section>
-<section class="tables-section">
-    <div class="max-width table-content">
-        <div class="left-col">
-            <div class="filter-header">
-                <p class="current-filter">All sites</p>
-                <?php
-                $cats = get_terms(array('hide_empty' => false));
-                foreach($cats as $types){
-                ?>
-                    <p><?php echo $types->name?></p>
-                <?php }?>
-            </div>
-            <div class="betting-col">
-                <div class="betting-header">
-                    <div class="col-item">
-                        <p>Website</p>
-                    </div>
-                    <div class="col-item">
-                        <p>Bonus</p>
-                    </div>
-                    <div class="col-item">
-                        <p>Code</p>
-                    </div>
-                    <div class="col-item">
-                        <p>Type</p>
+    <section class="single-section home-section">
+        <div class="max-width">
+            <div class="two-col reverse-col">
+                <div class="left-col">
+                    <div class="home-grid">
+                        <?php $loop = new WP_Query( array( 'post_type' => array( 'post', 'match'), 'posts_per_page' => -1)); ?>
+                        <?php if ( $loop->have_posts() ) : ?>
+                            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                                <?php $smallexcerpt = get_the_excerpt();
+                                    $categories = get_the_category();
+                                    $posttags = get_the_tags(); ?>
+                                <div class="home-grid-content">
+                                    <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
+                                    <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')"></div>
+                                    <div class="home-grid-text">
+                                        <h3><?php the_title() ; ?></h3>
+                                        <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
+                                        <div class="home-grid-tags">
+                                            <p><i class="material-icons">bookmark_border</i><?php echo esc_html( $posttags[0]->name ) ; ?></p>
+                                            <a style="<?php if($categories[0]->name == 'LOL') : ?> color: #4a90e2 ;background: #b2d0f3; <?php elseif($categories[0]->name == 'Dota') : ?> color:#feae57;background: #ffeed7; <?php endif ; ?>" href="#"><?php echo esc_html( $categories[0]->name ) ; ?></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                        <?php wp_reset_query(); ?>
                     </div>
                 </div>
-                <?php if( have_rows('deals') ): ?>
-                    <?php while( have_rows('deals') ) : the_row();?>
-                        <?php
-                        $term = get_sub_field('deals-categories');
-                        ?>
-                        <div class="col-grid">
-                            <a target="_blank" href="<?php the_sub_field('deals-link') ; ?>" class="absolute-link"></a>
-                            <div class="col-item">
-                                <img src="<?php the_sub_field('deals-logo') ; ?>">
-                            </div>
-                            <div class="col-item">
-                               <?php the_sub_field('deal-bonus') ; ?>
-                            </div>
-                            <div class="col-item black-p">
-                               <p><?php the_sub_field('deals-code') ; ?></p>
-                            </div>
-                            <div class="col-item col-item-type">
-                                <?php foreach($term as $type){ ?>
-                                <div class="betting-type"><p><?php echo  $type->name ; ?></p></div>
-                                <?php } ?>
-                            </div>
+                <div class="right-col">
+                    <?php $loop = new WP_Query( array( 'post_type' => 'bonus', 'posts_per_page' => -1)); ?>
+                    <?php if ( $loop->have_posts() ) : ?>
+                        <div class="bonuses">
+<!--                            <h5>Bonuses</h5>-->
+                            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                                <div class="bonus-grid">
+                                    <a target="_blank" href="<?php the_field('bonus-link') ; ?>" class="absolute-link"></a>
+                                    <div class="bonus-logo">
+                                        <img src="<?php the_field('bonus-logo') ; ?>" />
+                                    </div>
+                                    <p><?php the_field('bonus-text') ; ?></p>
+                                </div>
+                            <?php endwhile; ?>
                         </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-                <div class="col-grid">
-                    <a href="#" class="absolute-link"></a>
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/polygon.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>100</span> free credits</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>SkinIGXE</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                        <div class="betting-type"><p>Coin Flip</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/crash.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>50</span> free coins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>CSGO-Raffle</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Coin Flip</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/esport.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>6</span> free spins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>CSGOGETWIN</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/polygon.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>100</span> free credits</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>1TBR2M</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/crash.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>50</span> free coins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>CSGOGET</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Coin Flip</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/esport.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>6</span> free spins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>SkinIGXE</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/polygon.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>100</span> free credits</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>SkinIGXE</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                        <div class="betting-type"><p>Coin Flip</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/crash.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>50</span> free coins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>CSGO-Raffle</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Coin Flip</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/esport.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>6</span> free spins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>CSGOGETWIN</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/polygon.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>100</span> free credits</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>1TBR2M</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/crash.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>50</span> free coins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>CSGOGET</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Coin Flip</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                        <div class="betting-type"><p>Skins shop</p></div>
-                    </div>
-                </div>
-                <div class="col-grid">
-                    <div class="col-item">
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/esport.png' ) ); ?>">
-                    </div>
-                    <div class="col-item">
-                        <p>Get <span>6</span> free spins</p>
-                    </div>
-                    <div class="col-item black-p">
-                        <p>SkinIGXE</p>
-                    </div>
-                    <div class="col-item col-item-type">
-                        <div class="betting-type"><p>Free to start</p></div>
-                        <div class="betting-type"><p>Roulette</p></div>
-                        <div class="betting-type"><p>Betting</p></div>
-                    </div>
+                    <?php endif; ?>
+                    <?php wp_reset_query(); ?>
                 </div>
             </div>
         </div>
-        <div class="right-col">
-            <div class="right-col-content">
-                <div class="right-col-header betting-header">
-                    <p>Best today</p>
-                </div>
-                <div class="right-col-grid">
-                    <a target="_blank" href="<?php the_field('best-toady-link') ; ?>" class="absolute-link"></a>
-                    <img src="<?php the_field('best-toady-img') ; ?>">
-                </div>
-            </div>
-            <div class="right-col-content">
-                <div class="right-col-header betting-header">
-                    <p>Deals of the month</p>
-                </div>
-                <div class="right-col-grid">
-                <?php if( have_rows('monthly-deals') ): ?>
-                    <?php while( have_rows('monthly-deals') ) : the_row();?>
-                        <div class="right-grid">
-                            <a target="_blank" href="<?php the_sub_field('monthly-link') ; ?>" class="absolute-link"></a>
-                            <img src="<?php the_sub_field('monthly-logo') ; ?>">
-                            <p class="code-p">Code: <span><?php the_sub_field('monthly-code') ; ?></span></p>
-                            <?php the_sub_field('monthly-content') ; ?>
-                        </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-                    <div class="right-grid">
-                        <a href="#" class="absolute-link"></a>
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/polygon.png' ) ); ?>">
-                        <p class="code-p">Code: <span>CSGOGETWIN</span></p>
-                        <p>The Most Exclusive CSGO Platform. Join us and get <span>6</span> free spins</p>
-                    </div>
-                    <div class="right-grid">
-                        <a href="#" class="absolute-link"></a>
-                        <img src="<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/crash.png' ) ); ?>">
-                        <p class="code-p">Code: <span>CSGO-Raffle</span></p>
-                        <p>We’re back! Come and play today to win skins in our medium-sized <span>jackpots</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 <?php get_footer() ; ?>

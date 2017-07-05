@@ -6,9 +6,12 @@
             <div class="left-col">
                 <div class="single-content">
                     <div class="single-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
+                    <?php if( get_field('single-video') ): ?>
+                        <iframe src="<?php the_field('single-video') ; ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    <?php endif ; ?>
                     </div>
                     <div class="single-content-text">
-                        <h1><?php the_title() ; ?></h1>
+                        <h1><?php the_field('home-team') ; ?> VS. <?php the_field('away-team') ; ?></h1>
                         <?php the_content() ; ?>
                     </div>
                     <div class="single-affiliate-button">
@@ -51,7 +54,8 @@
                 </div>
             </div>
             <div class="right-col">
-                <div class="apester-media" data-media-id="5959f50af2d4938713c3859d" height="271" style="height: 271px"></div>
+                <?php the_field('match-poll') ; ?>
+<!--                <div class="apester-media" data-media-id="5959f50af2d4938713c3859d" height="271" style="height: 271px"></div>-->
                 <div class="streams">
                     <h5>Streams</h5>
                     <div class="stream-grid">
@@ -100,8 +104,8 @@
         </div>
         <div class="single-team-stats">
             <div class="team-stats-filter">
-                <h5 class="active-filter">SK gaming</h5>
-                <h5>Virtus Pro</h5>
+                <h5 class="active-filter"><?php the_field('home-team') ; ?></h5>
+                <h5><?php the_field('away-team') ; ?></h5>
             </div>
             <div class="team-stats-content">
                 <div class="team-stats-grid">
