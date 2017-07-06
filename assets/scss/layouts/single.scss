@@ -30,6 +30,18 @@
     flex-direction: column;
   }
 
+  .right-col{
+    min-width: 276px;
+    position: sticky;
+    top: 20px;
+
+    @include breakpoint(laptop) {
+      position: relative;
+      width: calc(100%);
+      top: 0;
+    }
+  }
+
   .left-col{
     margin: 0 0 0 40px;
 
@@ -38,6 +50,34 @@
     }
     @include breakpoint(laptop) {
       margin: 0;
+    }
+  }
+
+  .bonus-grid{
+
+    img{
+      max-width: 83px;
+    }
+
+    p{
+      font-size: 14px;
+    }
+  }
+
+  .bonus-logo{
+    min-width: 110px;
+  }
+  .single-img{
+    height: 34.5vw;
+
+    @include breakpoint(laptop) {
+      height: 52vw;
+    }
+    @include breakpoint(tablet) {
+      height: 54vw;
+    }
+    @include breakpoint(mobile) {
+      height: 53vw;
     }
   }
 }

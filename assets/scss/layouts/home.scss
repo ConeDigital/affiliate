@@ -1,17 +1,5 @@
 .home-section{
 
-  .right-col{
-    min-width: 276px;
-    position: sticky;
-    top: 20px;
-
-    @include breakpoint(laptop) {
-      position: relative;
-      width: calc(100% - 30px);
-      top: 0;
-    }
-  }
-
   .reverse-col{
     width: calc(100% + 20px);
 
@@ -32,21 +20,6 @@
         margin: 0;
       }
     }
-  }
-
-  .bonus-grid{
-
-    img{
-      max-width: 83px;
-    }
-
-    p{
-      font-size: 14px;
-    }
-  }
-
-  .bonus-logo{
-    min-width: 110px;
   }
 }
 

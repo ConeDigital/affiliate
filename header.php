@@ -24,7 +24,9 @@
                 <a class="absolute-link" href="<?php echo esc_url(home_url()); ?>"></a>
                 <p>E-sport<span>365</span></p>
             </div>
-            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '' ) ); ?>
+            <div class="header-middle">
+                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '' ) ); ?>
+            </div>
             <div class="header-right">
                 <div class="social-list">
                     <div class="social-icon">
@@ -41,7 +43,15 @@
                     </div>
                 </div>
             </div>
+            <button class="hamburger hamburger--spin" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
         </div>
     </header>
+    <div class="mobile-menu">
+        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '' ) ); ?>
+    </div>
 
     <div class="big-wrapper">

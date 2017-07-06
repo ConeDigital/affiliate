@@ -16,6 +16,9 @@
                 <div class="left-col">
                     <div class="single-content">
                         <div class="single-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
+                            <?php if( get_field('single-video') ): ?>
+                                <iframe src="<?php the_field('single-video') ; ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            <?php endif ; ?>
                         </div>
                         <div class="single-content-text">
                             <h1><?php the_title() ; ?></h1>
@@ -30,7 +33,7 @@
                     <?php $loop = new WP_Query( array( 'post_type' => 'bonus', 'posts_per_page' => -1)); ?>
                     <?php if ( $loop->have_posts() ) : ?>
                         <div class="bonuses">
-                            <h5>Bonuses</h5>
+<!--                            <h5>Bonuses</h5>-->
                             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                 <div class="bonus-grid">
                                     <a target="_blank" href="<?php the_field('bonus-link') ; ?>" class="absolute-link"></a>
