@@ -19,7 +19,7 @@
                                         <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
                                         <div class="home-grid-tags">
                                             <p><i class="material-icons">bookmark_border</i><?php echo esc_html( $posttags[0]->name ) ; ?></p>
-                                            <a style="<?php if($categories[0]->name == 'LOL') : ?> color: #4a90e2 ;background: #b2d0f3; <?php elseif($categories[0]->name == 'Dota') : ?> color:#feae57;background: #ffeed7; <?php endif ; ?>" href="#"><?php echo esc_html( $categories[0]->name ) ; ?></a>
+                                            <a style="<?php if($categories[0]->name == 'LOL') : ?> color: #4a90e2 ;background: #b2d0f3; <?php elseif($categories[0]->name == 'Dota') : ?> color:#feae57;background: #ffeed7; <?php elseif($categories[0]->name == 'Other') : ?> color:#2E7D32;background: #81C784;  <?php endif ; ?>" href="#"><?php echo esc_html( $categories[0]->name ) ; ?></a>
                                         </div>
                                     </div>
                                 </div>

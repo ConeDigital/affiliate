@@ -15,7 +15,7 @@
                         <?php the_content() ; ?>
                     </div>
                     <div class="single-affiliate-button">
-                        <a target="_blank" href="<?php the_field('best-bonus-link') ?>">Go to <?php the_field('best-bonus-text') ?> <i class="material-icons">arrow_forward</i></a>
+                        <a target="_blank" href="<?php the_field('best-bonus-link') ?>"><?php the_field('best-bonus-text') ?> <i class="material-icons">arrow_forward</i></a>
                     </div>
                 </div>
                 <div class="single-ods-section">
