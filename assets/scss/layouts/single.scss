@@ -47,6 +47,7 @@
 
   .left-col{
     margin: 0 0 0 40px;
+    width: 100%;
 
     @include breakpoint(desktop) {
       margin: 0 0 0 20px;

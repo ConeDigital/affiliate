@@ -891,7 +891,8 @@ header {
       .reverse-col .right-col {
         width: 100%; } }
   .reverse-col .left-col {
-    margin: 0 0 0 40px; }
+    margin: 0 0 0 40px;
+    width: 100%; }
     @media (max-width: 1000px) {
       .reverse-col .left-col {
         margin: 0 0 0 20px; } }

@@ -10,8 +10,8 @@ $pageTitle = get_the_title();
 <div class="second-header">
     <div class="max-width">
         <a class="active-link" href="<?php echo esc_url(home_url($pageTitle))?>">Matches and articles</a>
-        <a href="#">Highlights</a>
-        <a href="#">Live streams</a>
+<!--        <a href="#">Highlights</a>-->
+<!--        <a href="#">Live streams</a>-->
         <a href="#">How to bet</a>
     </div>
 </div>

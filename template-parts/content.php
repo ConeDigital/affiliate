@@ -24,9 +24,11 @@
                             <h1><?php the_title() ; ?></h1>
                             <?php the_content() ; ?>
                         </div>
-<!--                        <div class="single-affiliate-button">-->
-<!--                            <a target="_blank" href="--><?php //the_field('best-bonus-link') ?><!--">Go to --><?php //the_field('best-bonus-text') ?><!-- <i class="material-icons">arrow_forward</i></a>-->
-<!--                        </div>-->
+                        <?php if(get_field('best-bonus-text')) : ?>
+                        <div class="single-affiliate-button">
+                            <a target="_blank" href="<?php the_field('best-bonus-link') ?>">Go to <?php the_field('best-bonus-text') ?> <i class="material-icons">arrow_forward</i></a>
+                        </div>
+                        <?php endif ; ?>
                     </div>
                 </div>
                 <div class="right-col">

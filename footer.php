@@ -24,6 +24,8 @@
             <div class="footer-item">
                 <h3>Contact us</h3>
                 <a href="mailto:info@e-sport356.com">info@e-sport356.com</a>
+                <h3>About us</h3>
+                <a href="<?php echo esc_url(home_url('/2017/08/02/about-us')); ?>">Read about us</a>
             </div>
             <div class="footer-item">
                 <h3>How to bet on:</h3>
