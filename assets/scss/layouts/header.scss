@@ -19,6 +19,8 @@ header{
 
 .header-left{
   position: relative;
+  display: flex;
+  align-items: center;
   
   p{
     color: #4A4A4A;
@@ -49,7 +51,7 @@ header{
   }
 
   li{
-    margin: 0 8px;
+    margin: 0 40px 0 0;
   }
   a{
     color: #4A4A4A;
@@ -57,12 +59,19 @@ header{
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: $pangram;
+    letter-spacing: 1px;
   }
   .current-menu-item{
     a{
       color: $blue;
     }
   }
+}
+
+.header-logo{
+  margin-right: 60px;
+  position: relative;
 }
 
 .social-list{

@@ -375,8 +375,11 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "proxima nova", sans-serif;
+  font-family: "proxima-nova", sans-serif;
   background: #f7f7f7; }
+
+h1, h2, h3, h4, h6 {
+  font-family: pangram; }
 
 h1 {
   color: #000000;
@@ -500,7 +503,15 @@ header {
           align-items: center; }
 
 .header-left {
-  position: relative; }
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .header-left p {
     color: #4A4A4A;
     font-size: 24px;
@@ -524,17 +535,23 @@ header {
   margin: auto; }
 
 .menu-primary-menu-container li {
-  margin: 0 8px; }
+  margin: 0 40px 0 0; }
 
 .menu-primary-menu-container a {
   color: #4A4A4A;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-family: pangram;
+  letter-spacing: 1px; }
 
 .menu-primary-menu-container .current-menu-item a {
   color: #4A90E2; }
+
+.header-logo {
+  margin-right: 60px;
+  position: relative; }
 
 .social-list {
   display: -webkit-box;
@@ -755,13 +772,30 @@ header {
 
 .home-grid-img {
   width: 100%;
-  height: 19vw; }
+  height: 19vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   @media (max-width: 900px) {
     .home-grid-img {
       height: 28vw; } }
   @media (max-width: 700px) {
     .home-grid-img {
       height: 54vw; } }
+  .home-grid-img i {
+    font-size: 85px;
+    color: white;
+    opacity: 0.9;
+    position: relative; }
 
 .home-grid-text {
   background: white;
@@ -769,6 +803,13 @@ header {
   @media (max-width: 1000px) {
     .home-grid-text {
       padding: 25px 20px 0; } }
+  .home-grid-text span {
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #9b9b9b; }
   .home-grid-text h3 {
     margin: 0;
     color: #000000;
@@ -862,6 +903,8 @@ header {
   @media (max-width: 900px) {
     .left-col {
       margin: 0; } }
+  .left-col h1 {
+    margin: 0 0 20px; }
 
 .reverse-col {
   -webkit-box-orient: horizontal;

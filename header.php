@@ -21,10 +21,10 @@
     <header>
         <div class="header max-width">
             <div class="header-left">
-                <a class="absolute-link" href="<?php echo esc_url(home_url()); ?>"></a>
-                <p>E-sport<span>365</span></p>
-            </div>
-            <div class="header-middle">
+                <div class="header-logo">
+                    <a class="absolute-link" href="<?php echo esc_url(home_url()); ?>"></a>
+                    <p>E-sport<span>365</span></p>
+                </div>
                 <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '' ) ); ?>
             </div>
             <div class="header-right">

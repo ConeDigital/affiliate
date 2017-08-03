@@ -37,5 +37,7 @@
     </footer>
     <?php wp_footer(); ?>
 <script async src="https://static.apester.com/js/sdk/v2.0/apester-javascript-sdk.min.js"></script>
+<script src="https://use.typekit.net/zkn3qen.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </body>
 </html>

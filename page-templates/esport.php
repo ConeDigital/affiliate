@@ -30,8 +30,13 @@ $pageTitle = get_the_title();
                             $posttags = get_the_tags(); ?>
                             <div class="home-grid-content">
                                 <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
-                                <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')"></div>
+                                <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
+                                    <?php if($posttags[0]->name == 'Video') : ?>
+                                        <i class="material-icons">play_circle_filled</i>
+                                    <?php endif ; ?>
+                                </div>
                                 <div class="home-grid-text">
+                                    <span><?php echo get_the_date() ; ?></span>
                                     <h3><?php the_title() ; ?></h3>
                                     <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
                                     <div class="home-grid-tags">
