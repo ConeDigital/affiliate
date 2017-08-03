@@ -33,11 +33,10 @@ header{
       color: $blue;
     }
   }
-}
-
-.header-middle{
-  @include breakpoint(laptop){
-    display: none;
+  .menu-primary-menu-container {
+    @include breakpoint(laptop){
+      display: none;
+    }
   }
 }
 

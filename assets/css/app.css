@@ -520,10 +520,9 @@ header {
     margin: 0; }
     .header-left p span {
       color: #4A90E2; }
-
-@media (max-width: 900px) {
-  .header-middle {
-    display: none; } }
+  @media (max-width: 900px) {
+    .header-left .menu-primary-menu-container {
+      display: none; } }
 
 .menu-primary-menu-container ul {
   display: -webkit-box;
