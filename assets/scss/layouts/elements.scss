@@ -63,6 +63,23 @@ p, h5{
   }
 }
 
+.bonus-top{
+  display: flex;
+  padding: 10px 20px;
+  background: #4a90e2;
+  color: white;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: $pangram;
+
+  span{
+    &:first-child{
+      min-width: 110px;
+    }
+  }
+}
+
 .bonus-grid{
   padding: 10px 20px;
   background: white;
@@ -70,12 +87,16 @@ p, h5{
   display: flex;
   align-items: center;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-  margin-bottom: 17px;
   min-height: 25px;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  border-bottom: 1px solid #eee;
+
+  &:last-child{
+    border-bottom: none;
+  }
 
   &:hover{
-    box-shadow: 0 3px 8px 3px rgba(0,0,0,.1);
+    background: rgba(0,0,0,0.1);
   }
 
   img{

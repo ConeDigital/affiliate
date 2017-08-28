@@ -425,6 +425,21 @@ p, h5 {
     .bonuses h5 {
       margin: 0 0 10px 0; } }
 
+.bonus-top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 20px;
+  background: #4a90e2;
+  color: white;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: pangram; }
+  .bonus-top span:first-child {
+    min-width: 110px; }
+
 .bonus-grid {
   padding: 10px 20px;
   background: white;
@@ -439,15 +454,14 @@ p, h5 {
           align-items: center;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  margin-bottom: 17px;
   min-height: 25px;
-  -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
-  transition: -webkit-box-shadow 0.3s ease-in-out;
-  transition: box-shadow 0.3s ease-in-out;
-  transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out; }
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  border-bottom: 1px solid #eee; }
+  .bonus-grid:last-child {
+    border-bottom: none; }
   .bonus-grid:hover {
-    -webkit-box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 3px 8px 3px rgba(0, 0, 0, 0.1); }
+    background: rgba(0, 0, 0, 0.1); }
   .bonus-grid img {
     width: auto;
     height: auto;
@@ -514,10 +528,12 @@ header {
           align-items: center; }
   .header-left p {
     color: #4A4A4A;
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 400;
     line-height: 29px;
-    margin: 0; }
+    margin: 0;
+    font-family: 'Baloo Bhaijaan', cursive;
+    letter-spacing: -1px; }
     .header-left p span {
       color: #4A90E2; }
   @media (max-width: 900px) {
@@ -745,8 +761,8 @@ header {
           flex-wrap: wrap; }
 
 .home-grid-content {
-  width: -webkit-calc(50% - 42px);
-  width: calc(50% - 42px);
+  width: -webkit-calc(50% - 43px);
+  width: calc(50% - 43px);
   -webkit-box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid #EEE;
@@ -1233,8 +1249,8 @@ header {
 .other-list-item {
   margin-bottom: 60px; }
   .other-list-item h3 {
-    font-size: 30px;
-    text-transform: uppercase;
+    font-size: 25px;
+    text-transform: none;
     margin-bottom: 15px;
     color: #4A4A4A; }
   .other-list-item .bonus-grid {
@@ -1244,6 +1260,12 @@ header {
     .other-list-item .bonus-logo img {
       max-width: 150px;
       max-height: 40px; }
+
+.other-headline p {
+  line-height: 27px;
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 45px; }
 
 footer {
   background: #4A4A4A; }
@@ -1323,9 +1345,11 @@ footer {
   margin-top: 30px; }
   .footer-logo p {
     color: white;
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 400;
     line-height: 29px;
-    margin: 0; }
+    margin: 0;
+    font-family: 'Baloo Bhaijaan', cursive;
+    letter-spacing: -1px; }
   .footer-logo span {
     color: #4A90E2; }

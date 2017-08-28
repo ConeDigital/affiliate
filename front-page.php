@@ -38,6 +38,10 @@
                     <?php if ( $loop->have_posts() ) : ?>
                         <div class="bonuses">
 <!--                            <h5>Bonuses</h5>-->
+                            <div class="bonus-top">
+                                <span>Copmany</span>
+                                <span>Bonus</span>
+                            </div>
                             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                 <div class="bonus-grid">
                                     <a target="_blank" href="<?php the_field('bonus-link') ; ?>" class="absolute-link"></a>
