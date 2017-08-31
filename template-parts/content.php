@@ -16,11 +16,13 @@
                 <div class="left-col">
                     <h1><?php the_title() ; ?></h1>
                     <div class="single-content">
+                        <?php if( get_the_post_thumbnail_url()) : ?>
                         <div class="single-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
                             <?php if( get_field('single-video') ): ?>
                                 <iframe src="<?php the_field('single-video') ; ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
                             <?php endif ; ?>
                         </div>
+                        <?php endif ; ?>
                         <?php if( get_the_content()) : ?>
                         <div class="single-content-text">
                             <?php the_content() ; ?>

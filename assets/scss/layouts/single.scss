@@ -77,6 +77,7 @@
   }
   .single-img{
     height: 34.5vw;
+    max-height: 442px;
 
     @include breakpoint(laptop) {
       height: 52vw;
@@ -90,6 +91,10 @@
   }
 }
 
+.bonus-margin{
+  margin-bottom: 40px;
+}
+
 .single-content{
   border-radius: 3px;
   background-color: #FFFFFF;
@@ -100,9 +105,12 @@
 .single-img{
   height: 30vw;
   position: relative;
+  max-height: 385px;
 
   @include breakpoint(laptop) {
     height: 52vw;
+    max-height: 470px;
+
   }
   @include breakpoint(tablet) {
     height: 54vw;

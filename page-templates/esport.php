@@ -12,7 +12,7 @@ $pageTitle = get_the_title();
         <a class="active-link" href="<?php echo esc_url(home_url($pageTitle))?>">Matches and articles</a>
 <!--        <a href="#">Highlights</a>-->
 <!--        <a href="#">Live streams</a>-->
-        <a href="#">How to bet</a>
+<!--        <a href="#">How to bet</a>-->
     </div>
 </div>
 <section class="single-section home-section">

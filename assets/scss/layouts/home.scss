@@ -57,12 +57,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 245px;
 
   @include breakpoint(laptop) {
     height: 28vw;
   }
   @include breakpoint(tablet) {
     height: 54vw;
+    max-height: 355px;
   }
 
   i{
