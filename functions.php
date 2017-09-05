@@ -151,8 +151,71 @@ function cone_enqueue_scripts() {
 
     // vendor.js created with gulp
     wp_enqueue_script( 'main-min-scripts', get_template_directory_uri() . '/assets/js/src/main.min.js', array('jquery'), 1.0, true );
+
+    wp_localize_script(
+      'main-min-scripts', // this needs to match the name of our enqueued script
+      'ajaxApi',      // the name of the object
+      array('ajaxurl' => admin_url('admin-ajax.php')) // the property/value
+    );
 }
 add_action( 'wp_enqueue_scripts', 'cone_enqueue_scripts' );
 
 // Custom template tags
 require get_template_directory() . '/inc/template-tags.php';
+
+function api_pandascore_ajax() {
+
+    //twitch clientid = c5kmmewfnf79tek39fntsivakta9ow
+
+    // $twitch_clientid = 'c5kmmewfnf79tek39fntsivakta9ow';
+
+    // $twitch_url = 'https://api.twitch.tv/kraken/streams/22859264?client_id='.$twitch_clientid;
+
+    // $args = array(
+    //     'headers' => array( 'Accept' => 'application/vnd.twitchtv.v5+json' ),
+    // );
+
+    // $result = wp_remote_get( $twitch_url, $args );
+
+
+
+    //ID: geekodds
+    //Secret: a121c9bc2aab773b2f6c5b9a12852ca7d394bcdc2aa12d4ab1
+
+    $ID = 'geekodds';
+
+    $secret = 'a121c9bc2aab773b2f6c5b9a12852ca7d394bcdc2aa12d4ab1';
+
+    $token_credentials = 'grant_type=client_credentials&client_id='. $ID .'&client_secret=' . $secret;
+
+    $token_url = 'https://api.abiosgaming.com/v2/oauth/access_token';// . $token_credentials;
+
+    $args = array(
+        'headers' => array( 'Content-Type'  => 'application/x-www-form-urlencoded'),
+        //'body' => array( 'params' => array( 'grant_type' => 'client_credentials', 'client_id' => $ID, 'client_secret' => $secret ) ),
+        'body' =>  array(
+            'grant_type' => 'client_credentials',
+            'client_id' => $ID,
+            'client_secret' => $secret,
+        )
+    );
+
+    $token = wp_remote_post( $token_url , $args);
+
+    $new_token = json_decode($token['body'])->access_token;
+
+    $url = 'https://api.abiosgaming.com/v2/tournaments?games[]=5&with[]=series&starts_after=2017-08-25T00:00:00Z&starts_before=2017-09-30T00:00:00Z&access_token='.$new_token;
+
+    //$url = 'https://api.abiosgaming.com/v2/teams/876?with[]=game&with[]=team_stats&with[]=rosters&access_token='.$new_token;
+
+    //$url = 'https://api.abiosgaming.com/v2/series?games[]=5&with[]=matches&is_over=true&access_token='.$new_token;
+
+    $result = wp_remote_get( $url );
+    wp_send_json( json_decode( $result['body'] ) );
+    die();
+
+
+}
+
+add_action( 'wp_ajax_api_everysport_ajax', 'api_pandascore_ajax' );
+add_action( 'wp_ajax_nopriv_api_everysport_ajax', 'api_pandascore_ajax' );

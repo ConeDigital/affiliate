@@ -25,4 +25,37 @@ jQuery(document).ready( function($) {
             });
         }
     }
+
+    $('.api-click').on('click', function(){
+        $.ajax({
+            url: ajaxApi.ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'api_everysport_ajax',
+            },
+            success: function(data) {
+                console.log('Success');
+                console.log(data);
+                // var events = data.events;
+                // for(var key in events){
+                //     if(events.hasOwnProperty(key)){
+                //         var event = '<div class="table-content">' +
+                //             '<p>' + events[key].homeTeam.shortName + ' - '+ events[key].visitingTeam.shortName +'</p>' +
+                //             '<p class="thin">'+events[key].startDate +'<span>'; (events[key].homeTeam.id == 141706) ? event += '(H)' : event += '(B)'; event += '</span></p>' +
+                //         '</div>';
+                //         $('.upcoming-games').append(event);
+                //         console.log(events[key].homeTeam.shortName);
+                //     }
+                // }
+            },
+            error: function(response) {
+                console.log(response);
+                console.log('Error!!!!!!');
+            }
+        });
+    })
+
+
+
+
 });
