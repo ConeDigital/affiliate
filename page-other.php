@@ -2,6 +2,9 @@
 
 <section class="single-section home-section">
     <div class="max-width small-width">
+        <div class="other-headline">
+            <?php the_content() ; ?>
+        </div>
         <div class="other-list">
             <?php if( have_rows('others') ): ?>
                 <?php while( have_rows('others') ) : the_row();?>

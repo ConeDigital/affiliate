@@ -19,23 +19,26 @@ header{
 
 .header-left{
   position: relative;
+  display: flex;
+  align-items: center;
   
   p{
     color: #4A4A4A;
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 400;
     line-height: 29px;
     margin: 0;
+    font-family: 'Baloo Bhaijaan', cursive;
+    letter-spacing: -1px;
     
     span{
       color: $blue;
     }
   }
-}
-
-.header-middle{
-  @include breakpoint(laptop){
-    display: none;
+  .menu-primary-menu-container {
+    @include breakpoint(laptop){
+      display: none;
+    }
   }
 }
 
@@ -49,7 +52,7 @@ header{
   }
 
   li{
-    margin: 0 8px;
+    margin: 0 40px 0 0;
   }
   a{
     color: #4A4A4A;
@@ -57,12 +60,24 @@ header{
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: $pangram;
+    letter-spacing: 1px;
   }
   .current-menu-item{
     a{
       color: $blue;
     }
   }
+  .current-page-ancestor{
+    a{
+      color: $blue;
+    }
+  }
+}
+
+.header-logo{
+  margin-right: 60px;
+  position: relative;
 }
 
 .social-list{
@@ -102,6 +117,15 @@ header{
     display: none;
   }
 
+  ul{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+  }
+
   .max-width{
     height: 100%;
     display: flex;
@@ -117,8 +141,10 @@ header{
     margin-right: 50px;
   }
 
-  .active-link{
-    font-weight: bold;
+  .current_page_item{
+    a{
+      font-weight: bold;
+    }
   }
 }
 

@@ -13,13 +13,20 @@
                                     $posttags = get_the_tags(); ?>
                                 <div class="home-grid-content">
                                     <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
-                                    <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')"></div>
+                                    <?php if( get_the_post_thumbnail_url()) : ?>
+                                    <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
+                                    <?php if($posttags[0]->name == 'Video') : ?>
+                                        <i class="material-icons">play_circle_filled</i>
+                                    <?php endif ; ?>
+                                    </div>
+                                    <?php endif ; ?>
                                     <div class="home-grid-text">
+                                        <span><?php echo get_the_date() ; ?></span>
                                         <h3><?php the_title() ; ?></h3>
                                         <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
                                         <div class="home-grid-tags">
                                             <p><i class="material-icons">bookmark_border</i><?php echo esc_html( $posttags[0]->name ) ; ?></p>
-                                            <a style="<?php if($categories[0]->name == 'LOL') : ?> color: #4a90e2 ;background: #b2d0f3; <?php elseif($categories[0]->name == 'Dota') : ?> color:#feae57;background: #ffeed7; <?php endif ; ?>" href="#"><?php echo esc_html( $categories[0]->name ) ; ?></a>
+                                            <a style="<?php if($categories[0]->name == 'LOL') : ?> color: #4a90e2 ;background: #b2d0f3; <?php elseif($categories[0]->name == 'Dota') : ?> color:#feae57;background: #ffeed7; <?php elseif($categories[0]->name == 'Other') : ?> color:#2E7D32;background: #81C784;  <?php endif ; ?>" href="#"><?php echo esc_html( $categories[0]->name ) ; ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -33,6 +40,10 @@
                     <?php if ( $loop->have_posts() ) : ?>
                         <div class="bonuses">
 <!--                            <h5>Bonuses</h5>-->
+                            <div class="bonus-top">
+                                <span>Copmany</span>
+                                <span>Bonus</span>
+                            </div>
                             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                 <div class="bonus-grid">
                                     <a target="_blank" href="<?php the_field('bonus-link') ; ?>" class="absolute-link"></a>

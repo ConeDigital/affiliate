@@ -42,6 +42,9 @@ function cone_theme_setup() {
     register_nav_menus( array(
         'primary' => __( 'Primary menu', 'cone' ),
         'secondary' => __( 'Secondary menu', 'cone' ),
+        'csgo' => __( 'csgo', 'cone' ),
+        'dota2' => __( 'dota2', 'cone' ),
+        'lol' => __( 'lol', 'cone' ),
         'footer' => __( 'Footer menu', 'cone' )
     ) );
  
