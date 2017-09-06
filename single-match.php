@@ -5,9 +5,7 @@
         <div class="two-col">
             <div class="left-col">
                 <div class="single-content">
-                <?php if( get_the_post_thumbnail_url()) : ?>
                     <div class="single-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
-                <?php endif ; ?>
                     <?php if( get_field('single-video') ): ?>
                         <iframe src="<?php the_field('single-video') ; ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
                     <?php endif ; ?>
@@ -19,6 +17,9 @@
                     <div class="single-affiliate-button">
                         <a target="_blank" href="<?php the_field('best-bonus-link') ?>"><?php the_field('best-bonus-text') ?> <i class="material-icons">arrow_forward</i></a>
                     </div>
+                </div>
+                <div class="stream-frame" style="display: none;">
+                    <iframe src="" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>                   
                 </div>
 <!--                <div class="single-ods-section">-->
 <!--                    <div class="single-ods-headline single-ods-grid">-->
@@ -132,7 +133,7 @@
                             <span><?php the_field('betting-advice-starts') ; ?></span>
                         </div>
                         <div class="bonus-grid summation">
-                            <a target="_blank" href="<?php the_field('betting-advice-stream-link') ; ?>" class="absolute-link"></a>
+                            <a href="<?php the_field('betting-advice-stream-link') ; ?>" class="stream-link absolute-link"></a>
                             <div class="bonus-logo">
                                 <strong>Stream</strong>
                             </div>

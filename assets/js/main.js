@@ -26,6 +26,18 @@ jQuery(document).ready( function($) {
         }
     }
 
+    $('.stream-link').on('click', function(){
+        event.preventDefault();
+        if ($('.stream-frame').attr('style') == 'display: none;') {
+            var src = $(this).attr('href');
+            $('.stream-frame iframe').attr('src', src);
+            $('.stream-frame').show();
+            $('html, body').animate({
+                scrollTop: ($('.stream-frame').offset().top - 20)
+            }, 800);
+        }
+    });
+
     $('.api-click').on('click', function(){
         $.ajax({
             url: ajaxApi.ajaxurl,

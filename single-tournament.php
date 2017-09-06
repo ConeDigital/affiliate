@@ -61,7 +61,7 @@
                     <h2>Upcoming matches</h2>
                     <div class="home-grid">
                         <?php
-                        $loop = new WP_Query( array( 'post_type' => array( 'post', 'match'), 'posts_per_page' => 6 )); ?>
+                        $loop = new WP_Query( array( 'post_type' => array( 'post', 'match'), 'posts_per_page' => 6, 'meta_key' => 'cone_tournament_id', 'meta_value' => get_the_ID() )); ?>
                         <?php if ( $loop->have_posts() ) : ?>
                             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                 <?php $smallexcerpt = get_the_excerpt();

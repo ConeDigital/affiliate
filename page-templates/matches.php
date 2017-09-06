@@ -23,7 +23,7 @@ $parent = $post->post_parent;
                 <div class="home-grid">
 
                     <?php
-                    $loop = new WP_Query( array( 'post_type' => array( 'post', 'match'), 'posts_per_page' => -1, 'category_name' => get_the_title($parent))); ?>
+                    $loop = new WP_Query( array( 'post_type' => array('match'), 'posts_per_page' => -1, 'category_name' => get_the_title($parent), 'meta_key' => 'match_start_date', 'orderby' => 'meta_value', 'order' => 'ASC' ) ); ?>
                     <?php if ( $loop->have_posts() ) : ?>
                         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                             <?php $smallexcerpt = get_the_excerpt();
@@ -37,7 +37,7 @@ $parent = $post->post_parent;
                                     <?php endif ; ?>
                                 </div>
                                 <div class="home-grid-text">
-                                    <span><?php echo get_the_date() ; ?></span>
+                                    <span><?php the_field('match_start_date') ; ?></span>
                                     <h3><?php the_title() ; ?></h3>
                                     <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
                                     <div class="home-grid-tags">
