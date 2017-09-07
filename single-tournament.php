@@ -61,12 +61,18 @@
                 <?php
                 $loop = new WP_Query( array( 
                     'post_type' => array('match'),
-                    'posts_per_page' => 6,
+                    'posts_per_page' => -1,
                     'meta_query' => array( 
                         'relation' => 'AND', 
                         'tournament_clause' => array(
                             'key' => 'cone_tournament_id',
                             'value' => get_the_ID(),
+                        ),
+                        'match_end' => array(
+                            'key' => 'match_start_date',
+                            'type' => 'DATETIME',
+                            'value' => date("Y-m-d H:i:s", time() - 60 * 60 * 2),
+                            'compare' => '>',
                         ),
                         'match_clause' => array(
                             'key' => 'match_start_date',
