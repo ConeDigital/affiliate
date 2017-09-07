@@ -44,7 +44,8 @@
                     <div class="recent-matches-grid">
                         <?php while( have_rows('recent-matches') ) : the_row();?>
                             <div class="recent-match bonus-grid">
-                                <p><?php the_sub_field('recent-home-team') ; ?></p>
+                                <h5><?php the_sub_field('recent-game-type') ; ?></h5>
+                                <p class="text-align-r"><?php the_sub_field('recent-home-team') ; ?></p>
                                 <div>
                                     <span><?php the_sub_field('recent-home-score') ; ?></span> - <span><?php the_sub_field('recent-away-score') ; ?></span>
                                 </div>

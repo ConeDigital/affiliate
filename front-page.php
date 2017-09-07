@@ -27,6 +27,9 @@
                             )
                         ); 
                         $loop = new WP_Query( $args ); ?>
+                        <div class="single-esport-content">
+                            <?php the_content() ;?>
+                        </div>
                         <?php if ( $loop->have_posts() ) : ?>
                             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                 <?php $smallexcerpt = get_the_excerpt();
