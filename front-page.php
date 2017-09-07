@@ -5,6 +5,9 @@
             <div class="two-col reverse-col">
                 <div class="left-col">
                     <div class="home-grid">
+                        <div class="single-esport-content">
+                            <?php the_content() ;?>
+                        </div>
                         <?php $loop = new WP_Query( array( 'post_type' => array( 'match' ), 'posts_per_page' => -1, 'meta_key' => 'match_start_date', 'orderby' => 'meta_value', 'order' => 'ASC' ) ); ?>
                         <?php if ( $loop->have_posts() ) : ?>
                             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
