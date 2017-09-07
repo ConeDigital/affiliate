@@ -24,30 +24,24 @@ $pageTitle = get_the_title();
                         <?php the_content() ;?>
                     </div>
                     <?php
-                    $args = array(
-                        'post_type' => 'tournament',
+                    $args = array( 
+                        'post_type' => array('tournament'),
                         'posts_per_page' => 4,
-                        'category_name' => $pageTitle,
-                        'meta_key' => 'tournament-start-date',
-                        'orderby' => 'meta_value',
-                        'order' => 'ASC',
-                    );
-                    $args2 = array( 
-                        'post_type' => array('match'),
-                        'posts_per_page' => 6,
                         'meta_query' => array( 
                             'relation' => 'AND', 
-                            'tournament_clause' => array(
-                                'key' => 'cone_tournament_id',
-                                'value' => get_the_ID(),
+                            'tournament_end' => array(
+                                'key' => 'tournament-end-date',
+                                'type' => 'DATE',
+                                'value' => date('Ymd'),
+                                'compare' => '>',
                             ),
-                            'match_clause' => array(
-                                'key' => 'match_start_date',
+                            'tournament_start' => array(
+                                'key' => 'tournament-start-date',
                                 'compare' => 'EXISTS',
                             ),
                         ),
                         'orderby' => array( 
-                            'match_clause' => 'ASC',
+                            'tournament_start' => 'ASC',
                         )
                     );
                     $loop = new WP_Query( $args ); ?>
@@ -59,8 +53,7 @@ $pageTitle = get_the_title();
                                     <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                         <?php $smallexcerpt = get_the_excerpt();
                                         //$categories = get_the_category();
-                                        $posttags = get_the_tags();
-                                        if ( get_field('tournament-end-date', false, false) > date('Ymd') ) : ?>
+                                        $posttags = get_the_tags(); ?>
                                             <div class="home-grid-content">
                                                 <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
                                                 <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')"></div>
@@ -81,7 +74,6 @@ $pageTitle = get_the_title();
                                                 </div>
                                             </div>
                                     <?php 
-                                        endif;
                                     endwhile;  ?>
                             </div>
                         </div>
@@ -89,34 +81,53 @@ $pageTitle = get_the_title();
                     <?php endif; 
                     wp_reset_query(); ?>
                     <?php
-                    $loop = new WP_Query( array( 'post_type' => 'match', 'posts_per_page' => 4, 'category_name' => $pageTitle, 'meta_key' => 'match_start_date', 'orderby' => 'meta_value', 'order' => 'ASC', ) ); ?>
+                    $args = array(
+                        'post_type' => array('match'),
+                        'posts_per_page' => -1,
+                        'category_name' => $pageTitle,
+                        'meta_query' => array( 
+                            'relation' => 'AND', 
+                            'match_end' => array(
+                                'key' => 'match_start_date',
+                                'type' => 'DATETIME',
+                                'value' => date("Y-m-d H:i:s"), //date("Y-m-d H:i:s", time() - 60 * 60 * 24) - to include matches yesterday
+                                'compare' => '>',
+                            ),
+                            'match_start' => array(
+                                'key' => 'match_start_date',
+                                'compare' => 'EXISTS',
+                            ),
+                        ),
+                        'orderby' => array( 
+                            'match_start' => 'ASC',
+                        )
+                    );
+                    $loop = new WP_Query( $args ); ?>
                     <?php if ( $loop->have_posts() ) : ?>
                     <div class="single-esport-section">
                         <h2>Upcoming matches</h2>
                         <div class="home-grid">
                                 <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                                     <?php $smallexcerpt = get_the_excerpt();
-                                    $posttags = get_the_tags();
-                                    if ( get_field('match_start_date', false, false) > date('Y-m-d H:i:s') ) : ?>
-                                        <div class="home-grid-content">
-                                            <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
-                                            <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
-                                                <?php if($posttags[0]->name == 'Video') : ?>
-                                                    <i class="material-icons">play_circle_filled</i>
-                                                <?php endif ; ?>
-                                            </div>
-                                            <div class="home-grid-text">
-                                                <span><?php the_field('match_start_date') ; ?></span>
-                                                <h3><?php the_title() ; ?></h3>
-                                                <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
-                                                <div class="home-grid-tags">
-                                                    <p><i class="material-icons">bookmark_border</i><?php echo esc_html( $posttags[0]->name ) ; ?></p>
-                                                    <!--                                        <a href="#">--><?php //echo esc_html( $categories[0]->name ) ; ?><!--</a>-->
-                                                </div>
+                                    $posttags = get_the_tags(); ?>
+                                    <div class="home-grid-content">
+                                        <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
+                                        <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
+                                            <?php if($posttags[0]->name == 'Video') : ?>
+                                                <i class="material-icons">play_circle_filled</i>
+                                            <?php endif ; ?>
+                                        </div>
+                                        <div class="home-grid-text">
+                                            <span><?php the_field('match_start_date') ; ?></span>
+                                            <h3><?php the_title() ; ?></h3>
+                                            <p><?php echo wp_trim_words( $smallexcerpt , '20' ); ?></p>
+                                            <div class="home-grid-tags">
+                                                <p><i class="material-icons">bookmark_border</i><?php echo esc_html( $posttags[0]->name ) ; ?></p>
+                                                <!--                                        <a href="#">--><?php //echo esc_html( $categories[0]->name ) ; ?><!--</a>-->
                                             </div>
                                         </div>
+                                    </div>
                                 <?php
-                                    endif;
                                 endwhile; ?>
                         </div>
                     </div>

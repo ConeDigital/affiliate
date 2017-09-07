@@ -21,9 +21,29 @@ $parent = $post->post_parent;
         <div class="two-col reverse-col">
             <div class="left-col">
                 <div class="home-grid">
-
                     <?php
-                    $loop = new WP_Query( array( 'post_type' => array('match'), 'posts_per_page' => -1, 'category_name' => get_the_title($parent), 'meta_key' => 'match_start_date', 'orderby' => 'meta_value', 'order' => 'ASC' ) ); ?>
+                    $args = array(
+                        'post_type' => array('match'),
+                        'posts_per_page' => -1,
+                        'category_name' => get_the_title($parent),
+                        'meta_query' => array( 
+                            'relation' => 'AND', 
+                            'match_end' => array(
+                                'key' => 'match_start_date',
+                                'type' => 'DATETIME',
+                                'value' => date("Y-m-d H:i:s", time() - 60 * 60 * 24),
+                                'compare' => '>',
+                            ),
+                            'match_start' => array(
+                                'key' => 'match_start_date',
+                                'compare' => 'EXISTS',
+                            ),
+                        ),
+                        'orderby' => array( 
+                            'match_start' => 'ASC',
+                        )
+                    );
+                    $loop = new WP_Query( $args ); ?>
                     <?php if ( $loop->have_posts() ) : ?>
                         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
                             <?php $smallexcerpt = get_the_excerpt();
