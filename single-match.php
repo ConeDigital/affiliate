@@ -5,9 +5,17 @@
         <div class="two-col">
             <div class="left-col">
                 <div class="single-content">
-                    <div class="single-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
+                    <div class="single-img background-img" style="background-image: url('<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/match-backgr.jpg' ) ); ?>')">
+
                     <?php if( get_field('single-video') ): ?>
                         <iframe src="<?php the_field('single-video') ; ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+                        <?php else : ?>
+                        <div class="team-card">
+                            <img src="<?php the_field('home-team-logo') ; ?>">
+                            <span>VS</span>
+                            <img src="<?php the_field('away-team-logo') ; ?>">
+                        </div>
                     <?php endif ; ?>
                     </div>
                     <div class="single-content-text">

@@ -131,6 +131,26 @@
     width: 100%;
     height: 100%;
   }
+
+  .team-card{
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    align-items: center;
+
+    img{
+      max-width: 110px;
+      max-height: 110px;
+
+      @include breakpoint(mobile) {
+        max-width: 70px;
+        max-height: 70px;
+      }
+    }
+
+    span{
+      margin: 0 50px;
+    }
+  }
 }
 
 .single-content-text{

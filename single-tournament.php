@@ -62,26 +62,26 @@
                 $loop = new WP_Query( array( 
                     'post_type' => array('match'),
                     'posts_per_page' => -1,
-                    'meta_query' => array( 
-                        'relation' => 'AND', 
-                        'tournament_clause' => array(
-                            'key' => 'cone_tournament_id',
-                            'value' => get_the_ID(),
-                        ),
-                        'match_end' => array(
-                            'key' => 'match_start_date',
-                            'type' => 'DATETIME',
-                            'value' => date("Y-m-d H:i:s", time() - 60 * 60 * 2),
-                            'compare' => '>',
-                        ),
-                        'match_clause' => array(
-                            'key' => 'match_start_date',
-                            'compare' => 'EXISTS',
-                        ),
-                    ),
-                    'orderby' => array( 
-                        'match_clause' => 'ASC',
-                    ),
+//                    'meta_query' => array(
+//                        'relation' => 'AND',
+//                        'tournament_clause' => array(
+//                            'key' => 'cone_tournament_id',
+//                            'value' => get_the_ID(),
+//                        ),
+//                        'match_end' => array(
+//                            'key' => 'match_start_date',
+//                            'type' => 'DATETIME',
+//                            'value' => date("Y-m-d H:i:s", time() - 60 * 60 * 2),
+//                            'compare' => '>',
+//                        ),
+//                        'match_clause' => array(
+//                            'key' => 'match_start_date',
+//                            'compare' => 'EXISTS',
+//                        ),
+//                    ),
+//                    'orderby' => array(
+//                        'match_clause' => 'ASC',
+//                    ),
                 ) ); ?>
                 <?php if ( $loop->have_posts() ) : ?>
                 <div class="tournament-matches">
@@ -94,10 +94,12 @@
                                 $posttags = get_the_tags(); ?>
                                 <div class="home-grid-content">
                                     <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
-                                    <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url() ; ?>')">
-                                        <?php if($posttags[0]->name == 'Video') : ?>
-                                            <i class="material-icons">play_circle_filled</i>
-                                        <?php endif ; ?>
+                                    <div class="home-grid-img background-img" style="background-image: url('<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/match-backgr.jpg' ) ); ?>')">
+                                        <div class="team-card">
+                                            <img src="<?php the_field('home-team-logo') ; ?>">
+                                            <span>VS</span>
+                                            <img src="<?php the_field('away-team-logo') ; ?>">
+                                        </div>
                                     </div>
                                     <div class="home-grid-text">
                                         <span><?php the_field('match_start_date') ; ?></span>

@@ -40,6 +40,8 @@
 
   @include breakpoint(desktop) {
     margin: 0 10px 20px;
+    width: calc(50% - 22px);
+
   }
   @include breakpoint(tablet) {
     margin: 0 0 20px 0;
