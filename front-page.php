@@ -37,13 +37,13 @@
                                     $posttags = get_the_tags(); ?>
                                 <div class="home-grid-content">
                                     <a class="absolute-link" href="<?php the_permalink() ; ?>"></a>
-                                    <?php if( get_the_post_thumbnail_url()) : ?>
-                                    <div class="home-grid-img background-img" style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-                                    <?php if($posttags[0]->name == 'Video') : ?>
-                                        <i class="material-icons">play_circle_filled</i>
-                                    <?php endif ; ?>
+                                        <div class="home-grid-img background-img" style="background-image: url('<?php echo esc_url(home_url( '/wp-content/themes/affiliate/assets/images/match-backgr.jpg' ) ); ?>')">
+                                        <div class="team-card">
+                                            <img src="<?php the_field('home-team-logo') ; ?>">
+                                            <span>VS</span>
+                                            <img src="<?php the_field('away-team-logo') ; ?>">
+                                        </div>
                                     </div>
-                                    <?php endif ; ?>
                                     <div class="home-grid-text">
                                         <span><?php the_field('match_start_date') ; ?></span>
                                         <h3><?php the_title() ; ?></h3>
