@@ -62,26 +62,26 @@
                 $loop = new WP_Query( array( 
                     'post_type' => array('match'),
                     'posts_per_page' => -1,
-//                    'meta_query' => array(
-//                        'relation' => 'AND',
-//                        'tournament_clause' => array(
-//                            'key' => 'cone_tournament_id',
-//                            'value' => get_the_ID(),
-//                        ),
-//                        'match_end' => array(
-//                            'key' => 'match_start_date',
-//                            'type' => 'DATETIME',
-//                            'value' => date("Y-m-d H:i:s", time() - 60 * 60 * 2),
-//                            'compare' => '>',
-//                        ),
-//                        'match_clause' => array(
-//                            'key' => 'match_start_date',
-//                            'compare' => 'EXISTS',
-//                        ),
-//                    ),
-//                    'orderby' => array(
-//                        'match_clause' => 'ASC',
-//                    ),
+                    'meta_query' => array(
+                        'relation' => 'AND',
+                        'tournament_clause' => array(
+                            'key' => 'cone_tournament_id',
+                            'value' => get_the_ID(),
+                        ),
+                        'match_end' => array(
+                            'key' => 'match_start_date',
+                            'type' => 'DATETIME',
+                            'value' => date("Y-m-d H:i:s", time() - 60 * 60 * 2),
+                            'compare' => '>',
+                        ),
+                        'match_clause' => array(
+                            'key' => 'match_start_date',
+                            'compare' => 'EXISTS',
+                        ),
+                    ),
+                    'orderby' => array(
+                        'match_clause' => 'ASC',
+                    ),
                 ) ); ?>
                 <?php if ( $loop->have_posts() ) : ?>
                 <div class="tournament-matches">
